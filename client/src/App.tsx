@@ -5,7 +5,6 @@ function App() {
   const fizzbuzzUrl = import.meta.env.VITE_FIZZBUZZ_URL as string;
   const [count, setCount] = useState(0);
   const [message, setMessage] = useState("");
-  console.log({ fizzbuzzUrl });
   const postCountData = {
     count: count,
   };
