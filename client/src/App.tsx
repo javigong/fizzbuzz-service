@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const fizzbuzzUrl = import.meta.env.FIZZBUZZ_URL as string;
+  const fizzbuzzUrl = import.meta.env.VITE_FIZZBUZZ_URL as string;
   const [count, setCount] = useState(0);
   const [message, setMessage] = useState("");
   console.log({ fizzbuzzUrl });
@@ -11,7 +11,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3000/fizzbuzz`, {
+    fetch(`${fizzbuzzUrl}/fizzbuzz`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

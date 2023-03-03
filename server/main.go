@@ -18,9 +18,9 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 	// Get the host and port env variables
-	host := os.Getenv("HOST")
-	if host == "" {
-		host = "localhost"
+	url := os.Getenv("URL")
+	if url == "" {
+		url = "localhost"
 	}
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -44,7 +44,7 @@ func main() {
 	// Define route
 	router.POST("/fizzbuzz", getFizzbuzzMessage)
 	// Start server
-	addr := fmt.Sprintf("%s:%s", "localhost", "3000")
+	addr := fmt.Sprintf("%s:%s", url, "3000")
 	router.Run(addr)
 }
 
