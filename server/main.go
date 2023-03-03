@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/itsjamie/gin-cors"
+	"github.com/gin-contrib/cors"
 	"github.com/joho/godotenv"
 )
 
@@ -31,15 +31,17 @@ func main() {
 	router := gin.Default()
 
 	// Apply the middleware to the router (works with groups too)
-	router.Use(cors.Middleware(cors.Config{
-		Origins:         "*",
-		Methods:         "POST",
-		RequestHeaders:  "Origin, Authorization, Content-Type",
-		ExposedHeaders:  "",
-		MaxAge:          50 * time.Second,
-		Credentials:     false,
-		ValidateHeaders: false,
-	}))
+	router.Use(cors.New(cors.Config{
+    AllowOrigins:     []string{"https://fizzbuzz-service-client-javier-gongora.vercel.app"},
+    AllowMethods:     []string{"POST"},
+    AllowHeaders:     []string{"Origin"},
+    ExposeHeaders:    []string{"Content-Length"},
+    AllowCredentials: true,
+    AllowOriginFunc: func(origin string) bool {
+      return origin == "https://github.com"
+    },
+    MaxAge: 12 * time.Hour,
+  }))
 
 	// Define route
 	router.POST("/fizzbuzz", getFizzbuzzMessage)
