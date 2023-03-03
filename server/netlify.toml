@@ -1,0 +1,7 @@
+[build]
+  command = "go build -o app"
+  publish = "public"
+
+[dev]
+  command = "go run main.go"
+  publish = "public"
