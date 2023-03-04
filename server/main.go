@@ -13,10 +13,6 @@ import (
 )
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
 	// Get the host and port env variables
 	url := os.Getenv("URL")
 	if url == "" {
