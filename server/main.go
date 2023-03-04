@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -16,15 +15,6 @@ func main() {
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
-	}
-	// Get the host and port env variables
-	url := os.Getenv("URL")
-	if url == "" {
-		url = "localhost"
-	}
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "3000"
 	}
 
 	// Initialize Gin
@@ -46,8 +36,13 @@ func main() {
 	// Define route
 	router.POST("/fizzbuzz", getFizzbuzzMessage)
 	// Start server
-	addr := fmt.Sprintf("%s:%s", url, "3000")
-	router.Run(addr)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "3000"
+	}
+	if err := router.Run(":" + port); err != nil {
+        log.Panicf("error: %s", err)
+	}
 }
 
 // Handle get fizzbuzz message
