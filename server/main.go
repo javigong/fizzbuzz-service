@@ -34,7 +34,7 @@ func main() {
 	router.Use(cors.New(cors.Config{
     AllowOrigins:     []string{"https://fizzbuzz-service-client-javier-gongora.vercel.app"},
     AllowMethods:     []string{"POST"},
-    AllowHeaders:     []string{"Origin"},
+    AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type"},
     ExposeHeaders:    []string{"Content-Length"},
     AllowCredentials: true,
     AllowOriginFunc: func(origin string) bool {
