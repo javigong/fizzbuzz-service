@@ -32,7 +32,7 @@ func main() {
 
 	// Apply the middleware to the router (works with groups too)
 	router.Use(cors.New(cors.Config{
-    AllowOrigins:     []string{"*"},
+    AllowOrigins:     []string{"https://fizzbuzz-service-client-javier-gongora.vercel.app"},
     AllowMethods:     []string{"POST"},
     AllowHeaders:     []string{"Origin"},
     ExposeHeaders:    []string{"Content-Length"},
